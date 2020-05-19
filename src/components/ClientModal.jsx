@@ -55,7 +55,7 @@ class ClientModal extends Component {
                                     placeholder="Add client"
                                     onChange={this.onChange}>
                                 </Input>
-                                <Label for="description">
+                                <Label for="description" className="mt-4">
                                     Description
                                 </Label>
                                 <Input
@@ -66,6 +66,7 @@ class ClientModal extends Component {
                                     onChange={this.onChange}>
                                 </Input>
                                 <Button
+                                    className="mt-4"
                                     color="dark"
                                     block >
                                     Save client
