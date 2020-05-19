@@ -4,6 +4,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar'
 import ClientList from './components/ClientList'
+import ClientModal from './components/ClientModal'
+import { Container } from 'reactstrap'
 
 import { Provider } from 'react-redux'
 import store from './store'
@@ -14,7 +16,10 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <NavBar />
-          <ClientList />
+          <Container>
+            <ClientModal />
+            <ClientList />
+          </Container>
         </div>
       </Provider>
     )
