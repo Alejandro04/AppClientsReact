@@ -14,7 +14,9 @@ class ClientList extends Component {
     }
 
     handleDelete = (id) => {
-        console.log(id)
+        this.setState(state => ({
+            items: state.items.filter(item => item.id !== id)
+        }))
     };
 
 
