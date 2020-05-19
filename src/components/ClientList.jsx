@@ -22,18 +22,18 @@ class ClientList extends Component {
             <div>
                 <ListGroup>
                     <TransitionGroup className="client-list">
-                        {clients.map(({id, name }) => (
-                            <CSSTransition key={id} timeout={500} classNames="fade">
+                        {clients.map(({_id, name, description }) => (
+                            <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
                                         className="mr-4"
                                         color="danger"
                                         size="sm"
-                                        onClick={() => this.handleDelete(id)}
+                                        onClick={() => this.handleDelete(_id)}
                                     >
                                         &times;
                                         </Button>
-                                    {name}
+                                    {name} - {description}
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}

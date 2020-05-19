@@ -1,30 +1,32 @@
-import { v4 as uuid } from 'uuid';
-import { GET_CLIENTS, ADD_CLIENT, DELETE_CLIENT } from '../actions/types'
+import { GET_CLIENTS, ADD_CLIENT, DELETE_CLIENT, LOADING_CLIENTS } from '../actions/types'
 
 const initialState = {
-    clients: [
-        { id: uuid(), name: 'Client 1' },
-        { id: uuid(), name: 'Client 2' },
-        { id: uuid(), name: 'Client 3' },
-        { id: uuid(), name: 'Client 4' },
-    ]
+    clients: [],
+    loading: false,
 }
 
-export default function (state = initialState, action){
-    switch(action.type){
+export default function (state = initialState, action) {
+    switch (action.type) {
         case GET_CLIENTS:
             return {
-                ...state
+                ...state,
+                clients: action.payload,
+                loading: false
             }
         case DELETE_CLIENT:
             return {
                 ...state,
-                clients: state.clients.filter(client => client.id !== action.payload )
+                clients: state.clients.filter(client => client._id !== action.payload)
             }
         case ADD_CLIENT:
             return {
                 ...state,
                 clients: [action.payload, ...state.clients]
+            }
+        case LOADING_CLIENTS:
+            return {
+                ...state,
+                loading: true
             }
         default:
             return state

@@ -3,7 +3,6 @@ import {
     Button, Modal, ModalHeader, ModalBody, ModalFooter,
     Form, FormGroup, Label, Input, FormText
 } from 'reactstrap';
-import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux'
 import { addClient } from '../actions/itemAction'
 
@@ -11,7 +10,8 @@ class ClientModal extends Component {
 
     state = {
         modal: false,
-        name: ''
+        name: '',
+        description: ''
     }
 
     handleToogle = () => {
@@ -28,8 +28,8 @@ class ClientModal extends Component {
         e.preventDefault()
 
         const newClient = {
-            id: uuid(),
-            name: this.state.name
+            name: this.state.name,
+            description: this.state.description
         }
 
         this.props.addClient(newClient)
@@ -53,6 +53,16 @@ class ClientModal extends Component {
                                     name="name"
                                     id="client"
                                     placeholder="Add client"
+                                    onChange={this.onChange}>
+                                </Input>
+                                <Label for="description">
+                                    Description
+                                </Label>
+                                <Input
+                                    type="text"
+                                    name="description"
+                                    id="description"
+                                    placeholder="Add description"
                                     onChange={this.onChange}>
                                 </Input>
                                 <Button
