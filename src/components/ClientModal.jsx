@@ -15,7 +15,6 @@ class ClientModal extends Component {
     }
 
     handleToogle = () => {
-        console.log("ok")
         this.setState({
             modal: !this.state.modal
         })
@@ -74,7 +73,7 @@ class ClientModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    clients: state.clients
 })
 
 export default connect(mapStateToProps, { addClient })(ClientModal);

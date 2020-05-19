@@ -16,12 +16,13 @@ class ClientList extends Component {
     };
 
     render() {
-        const { items } = this.props.item
+        console.log(this.props)
+        const { clients } = this.props.clients
         return (
             <div>
                 <ListGroup>
                     <TransitionGroup className="client-list">
-                        {items.map(({id, name }) => (
+                        {clients.map(({id, name }) => (
                             <CSSTransition key={id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
@@ -45,11 +46,11 @@ class ClientList extends Component {
 
 ClientList.propTypes = {
     getClients: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
+    clients: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    clients: state.clients
 })
 
 export default connect(mapStateToProps, {getClients, deleteClient})(ClientList)

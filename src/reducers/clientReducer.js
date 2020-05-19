@@ -1,9 +1,8 @@
 import { v4 as uuid } from 'uuid';
 import { GET_CLIENTS, ADD_CLIENT, DELETE_CLIENT } from '../actions/types'
 
-
 const initialState = {
-    items: [
+    clients: [
         { id: uuid(), name: 'Client 1' },
         { id: uuid(), name: 'Client 2' },
         { id: uuid(), name: 'Client 3' },
@@ -20,12 +19,12 @@ export default function (state = initialState, action){
         case DELETE_CLIENT:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.payload )
+                clients: state.clients.filter(client => client.id !== action.payload )
             }
         case ADD_CLIENT:
             return {
                 ...state,
-                items: [action.payload, ...state.items]
+                clients: [action.payload, ...state.clients]
             }
         default:
             return state
