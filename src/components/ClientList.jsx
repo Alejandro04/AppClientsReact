@@ -3,7 +3,7 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux'
-import { getClients } from '../actions/itemAction'
+import { getClients, deleteClient } from '../actions/itemAction'
 import PropTypes from 'prop-types'
 
 class ClientList extends Component {
@@ -13,11 +13,8 @@ class ClientList extends Component {
     }
 
     handleDelete = (id) => {
-        this.setState(state => ({
-            items: state.items.filter(item => item.id !== id)
-        }))
+        this.props.deleteClient(id)
     };
-
 
     render() {
         const { items } = this.props.item
@@ -69,4 +66,4 @@ const mapStateToProps = (state) => ({
     item: state.item
 })
 
-export default connect(mapStateToProps, {getClients})(ClientList)
+export default connect(mapStateToProps, {getClients, deleteClient})(ClientList)
