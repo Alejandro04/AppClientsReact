@@ -13,22 +13,47 @@ class ClientList extends Component {
         ]
     }
 
+    handleDelete = (id) => {
+        console.log(id)
+    };
+
+
     render() {
         const { items } = this.state
         return (
             <Container>
                 <Button
-                color="dark"
-                style={{marginBottom:'2rem'}}
-                onClick={() =>{
-                    const name = prompt('Enter Client')
-                    if(name){
-                        this.setState(state => ({
-                            items: [...state.items, { id: uuid(), name}]
-                        }))
-                    }
-                }}
+                    color="dark"
+                    style={{ marginBottom: '2rem' }}
+                    onClick={() => {
+                        const name = prompt('Enter Client')
+                        if (name) {
+                            this.setState(state => ({
+                                items: [...state.items, { id: uuid(), name }]
+                            }))
+                        }
+                    }}
                 >Add Client</Button>
+
+                <ListGroup>
+                    <TransitionGroup className="client-list">
+                        {items.map(({id, name }) => (
+                            <CSSTransition key={id} timeout={500} classNames="fade">
+                                <ListGroupItem>
+                                    <Button
+                                        className="mr-4"
+                                        color="danger"
+                                        size="sm"
+                                        onClick={() => this.handleDelete(id)}
+                                    >
+                                        &times;
+                                        </Button>
+                                    {name}
+                                </ListGroupItem>
+                            </CSSTransition>
+                        ))}
+                    </TransitionGroup>
+                </ListGroup>
             </Container>
         )
     }
