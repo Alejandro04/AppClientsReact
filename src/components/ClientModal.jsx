@@ -4,7 +4,7 @@ import {
     Form, FormGroup, Label, Input, FormText
 } from 'reactstrap';
 import { connect } from 'react-redux'
-import { addClient } from '../actions/itemAction'
+import { addClient } from '../actions/clientAction'
 
 class ClientModal extends Component {
 
