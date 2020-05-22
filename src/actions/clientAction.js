@@ -3,11 +3,12 @@ import { GET_CLIENTS, ADD_CLIENT, DELETE_CLIENT, LOADING_CLIENTS } from './types
 import { returnErrors } from './errorAction'
 import { configToken } from './authAction'
 
+const LOCAL_URL = "http://localhost:4000/api/clients"
 
 export const getClients = () => (dispatch, getState) => {
     dispatch(loadingClients())
     axios
-        .get('http://localhost:4000/api/clients', configToken(getState))
+        .get(LOCAL_URL, configToken(getState))
         .then(res => {
             dispatch({
                 type: GET_CLIENTS,
@@ -19,7 +20,7 @@ export const getClients = () => (dispatch, getState) => {
 
 export const addClient = client => (dispatch, getState) => {
     axios
-        .post('http://localhost:4000/api/clients', client, configToken(getState))
+        .post(LOCAL_URL, client, configToken(getState))
         .then(res => {
             dispatch({
                 type: ADD_CLIENT,
@@ -31,7 +32,7 @@ export const addClient = client => (dispatch, getState) => {
 
 export const deleteClient = id => (dispatch, getState) => {
     axios
-        .delete(`http://localhost:4000/api/clients/${id}`, configToken(getState))
+        .delete(`${LOCAL_URL}/${id}`, configToken(getState))
         .then(res => {
             dispatch({
                 type: DELETE_CLIENT,
