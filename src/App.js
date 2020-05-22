@@ -14,7 +14,7 @@ import { loadUser } from './actions/authAction'
 class App extends Component {
 
   componentDidMount(){
-    store.dispatch(loadUser())
+    store.dispatch(loadUser(localStorage.getItem('email')))
   }
 
   render() {

@@ -10,19 +10,27 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL
 } from '../actions/types'
-import authReducer from '../reducers/authReducer'
 import { returnErrors } from './errorAction'
 
 // Check token and loaduser
-export const loadUser = () => (dispatch, getState) => {
+export const loadUser = (email) => (dispatch, getState) => {
     // User loading
     dispatch({ type: LOADING_USER })
 
-    axios.get('http://localhost:4000/api/auth/user', configToken(getState))
-        .then(res => dispatch({
-            type: LOADED_USER,
-            payload: res.data
-        }))
+    axios.request({
+        method: 'POST',
+        url: `http://localhost:4000/api/auth/user`,
+        headers: {
+            "Content-type": "application/json",
+            "x-auth-token": getState().auth.token
+        },
+        data: {
+            email
+        },
+    }).then(res => dispatch({
+        type: LOADED_USER,
+        payload: res.data
+    }))
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status))
             dispatch({
@@ -62,8 +70,8 @@ export const logout = () => {
 }
 
 export const login = ({ email, password }) => dispatch => {
-     // Config headers
-     const config = {
+    // Config headers
+    const config = {
         headers: {
             "Content-type": "application/json"
         }
