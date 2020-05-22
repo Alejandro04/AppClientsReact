@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 import RegisterModal from './auth/RegisterModal'
 import Logout from './auth/Logout'
+import Login from './auth/LoginModal'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +31,9 @@ const NavBar = (props) => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               <RegisterModal/>
+            </NavItem>
+            <NavItem>
+              <Login/>
             </NavItem>
             <NavItem>
               <Logout/>
