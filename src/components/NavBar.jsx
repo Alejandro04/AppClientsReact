@@ -13,6 +13,8 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import RegisterModal from './auth/RegisterModal'
+import Logout from './auth/Logout'
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,10 +29,10 @@ const NavBar = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/clients/">Clients</NavLink>
+              <RegisterModal/>
             </NavItem>
             <NavItem>
-              <NavLink href="/users/">Users</NavLink>
+              <Logout/>
             </NavItem>
           </Nav>
           <NavbarText>Github</NavbarText>
