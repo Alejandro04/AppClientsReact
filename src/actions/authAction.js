@@ -19,7 +19,7 @@ export const loadUser = (email) => (dispatch, getState) => {
 
     axios.request({
         method: 'POST',
-        url: `http://localhost:4000/api/auth/user`,
+        url: `http://localhost:4000/api/user`,
         headers: {
             "Content-type": "application/json",
             "x-auth-token": getState().auth.token

@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -34,12 +35,16 @@ const NavBar = (props) => {
       </NavItem>
       <NavItem>
         <span className="navbar-text ml-3 mr-3">
-          <strong>Users</strong>
+          <Link to={'/users'}>
+            Users
+          </Link>
         </span>
       </NavItem>
       <NavItem>
-        <span className="navbar-text ml-3 mr-3">
-          <strong>Clients</strong>
+      <span className="navbar-text ml-3 mr-3">
+          <Link to={'/clients'}>
+            Clients
+          </Link>
         </span>
       </NavItem>
       <NavItem>
