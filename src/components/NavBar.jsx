@@ -29,11 +29,6 @@ const NavBar = (props) => {
   const authLinks = (
     <Fragment>
       <NavItem>
-        <span className="navbar-text">
-          <strong>{user ? user.name : ''}</strong>
-        </span>
-      </NavItem>
-      <NavItem>
         <span className="navbar-text ml-3 mr-3">
           <Link to={'/users'}>
             Users
@@ -49,6 +44,11 @@ const NavBar = (props) => {
       </NavItem>
       <NavItem>
         <Logout />
+      </NavItem>
+      <NavItem>
+        <span className="navbar-text mr-3 nameText">
+          <strong>Hello {user ? user.name : ''}</strong>
+        </span>
       </NavItem>
     </Fragment>
   )
