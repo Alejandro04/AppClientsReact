@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_CLIENTS, ADD_CLIENT, DELETE_CLIENT, LOADING_CLIENTS } from './types'
+import { GET_CLIENTS, ADD_CLIENT, UPDATE_CLIENT, DELETE_CLIENT, LOADING_CLIENTS } from './types'
 import { returnErrors } from './errorAction'
 import { configToken } from './authAction'
 
@@ -24,6 +24,19 @@ export const addClient = client => (dispatch, getState) => {
         .then(res => {
             dispatch({
                 type: ADD_CLIENT,
+                payload: res.data.client
+            })
+        })
+        .catch(err => returnErrors(err.response.data, err.response.status))
+}
+
+export const updateClient = client => (dispatch, getState) => {
+    axios
+        .patch(`${LOCAL_URL}/${client._id}`, client, configToken(getState))
+        .then(res => {
+            console.log(res)
+            dispatch({
+                type: UPDATE_CLIENT,
                 payload: res.data.client
             })
         })

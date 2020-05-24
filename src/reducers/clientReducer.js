@@ -1,4 +1,4 @@
-import { GET_CLIENTS, ADD_CLIENT, DELETE_CLIENT, LOADING_CLIENTS } from '../actions/types'
+import { GET_CLIENTS, ADD_CLIENT, UPDATE_CLIENT, DELETE_CLIENT, LOADING_CLIENTS } from '../actions/types'
 
 const initialState = {
     clients: [],
@@ -18,6 +18,13 @@ export default function (state = initialState, action) {
                 ...state,
                 clients: state.clients.filter(client => client._id !== action.payload)
             }
+        case UPDATE_CLIENT:
+            return {
+                ...state,
+                clients: state.clients.map(
+                    (client, i) => client._id === action.payload._id ? { ...client, name: action.payload.name, description: action.payload.description }
+                        : client)
+            };
         case ADD_CLIENT:
             return {
                 ...state,

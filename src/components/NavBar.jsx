@@ -33,6 +33,16 @@ const NavBar = (props) => {
         </span>
       </NavItem>
       <NavItem>
+        <span className="navbar-text ml-3 mr-3">
+          <strong>Users</strong>
+        </span>
+      </NavItem>
+      <NavItem>
+        <span className="navbar-text ml-3 mr-3">
+          <strong>Clients</strong>
+        </span>
+      </NavItem>
+      <NavItem>
         <Logout />
       </NavItem>
     </Fragment>

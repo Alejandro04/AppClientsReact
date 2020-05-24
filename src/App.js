@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar'
 import ClientList from './components/ClientList'
 import ClientModal from './components/ClientModal'
+import UserList from './components/UserList'
 import { Container } from 'reactstrap'
 
 import { Provider } from 'react-redux'
@@ -13,7 +14,7 @@ import { loadUser } from './actions/authAction'
 
 class App extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     store.dispatch(loadUser(localStorage.getItem('email')))
   }
 
@@ -23,7 +24,7 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Container>
-            <ClientModal />
+            <ClientModal/>
             <ClientList />
           </Container>
         </div>

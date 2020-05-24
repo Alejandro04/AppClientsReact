@@ -2,33 +2,26 @@ import React, { Component } from 'react'
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux'
-import { getClients, deleteClient } from '../actions/clientAction'
+import { getUsers, deleteUser } from '../actions/userAction'
 import PropTypes from 'prop-types'
 
-// Children components
-import ClientUpdateModal from './ClientUpdateModal'
-
-class ClientList extends Component {
+class UserList extends Component {
 
     componentDidMount(){
-        this.props.getClients()
+        this.props.getUsers()
     }
 
     handleDelete = (id) => {
-        this.props.deleteClient(id)
+        this.props.deleteUser(id)
     };
 
-    handleUpdate = (id, name, description) => {
-
-    }
-
     render() {
-        const { clients } = this.props.clients
+        const { users } = this.props.users
         return (
             <div>
                 <ListGroup>
-                    <TransitionGroup className="client-list">
-                        {clients.map(({_id, name, description }) => (
+                    <TransitionGroup className="client-list">     
+                        {users.map(({_id, name, email }) => (
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
@@ -39,8 +32,7 @@ class ClientList extends Component {
                                     >
                                         &times;
                                         </Button>
-                                    {name} - {description}
-                                        <ClientUpdateModal _id={_id} name={name} description={description} />
+                                    {name} - {email}
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
@@ -51,13 +43,13 @@ class ClientList extends Component {
     }
 }
 
-ClientList.propTypes = {
-    getClients: PropTypes.func.isRequired,
-    clients: PropTypes.object.isRequired
+UserList.propTypes = {
+    getUsers: PropTypes.func.isRequired,
+    users: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    clients: state.clients
+    users: state.users
 })
 
-export default connect(mapStateToProps, {getClients, deleteClient})(ClientList)
+export default connect(mapStateToProps, {getUsers, deleteUser})(UserList)
