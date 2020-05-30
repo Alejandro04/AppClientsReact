@@ -1,33 +1,30 @@
-import React, { Component } from 'react';
-import { Form, Input } from 'reactstrap';
+import React, { Component } from 'react'
+import { Input } from 'reactstrap'
+import { connect } from 'react-redux'
+import { searchClients } from '../actions/clientAction'
 
 class SearchInput extends Component {
 
-  state = {
-    dataSearch: ''
-  }
+  state = {}
 
-  onSubmit = e => {
-    e.preventDefault()
-
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
-    console.log("buscando", this.state.dataSearch)
-    //this.props.SearchItem(this.state.dataSearch)
-  }
+
+    console.log(this.state)
+    this.props.searchClients(this.state.search)
+}
 
   render() {
     return (
-      <Form>
         <Input
           type="text"
           name="search"
           id="search"
           placeholder="Search"
           className="mb-4"
-          onChange={this.onSubmit} />
-      </Form>
+          onChange={this.onChange} />
     );
   }
 }
 
-export default SearchInput;
+export default connect(null, { searchClients })(SearchInput)

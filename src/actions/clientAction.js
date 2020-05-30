@@ -60,3 +60,16 @@ export const loadingClients = () => {
         type: LOADING_CLIENTS
     }
 }
+
+export const searchClients = (data) => (dispatch, getState) => {
+    dispatch(loadingClients())
+    axios
+        .get(LOCAL_URL+'/'+data, configToken(getState))
+        .then(res => {
+            dispatch({
+                type: GET_CLIENTS,
+                payload: res.data
+            })
+        })
+        .catch(err => returnErrors(err.response.data, err.response.status))
+}
