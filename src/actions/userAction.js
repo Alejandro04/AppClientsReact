@@ -47,3 +47,16 @@ export const loadingUsers = () => {
         type: LOADING_USERS
     }
 }
+
+export const searchUsers = (data) => (dispatch, getState) => {
+    dispatch(loadingUsers())
+    axios
+        .get(LOCAL_URL + '/' + data, configToken(getState))
+        .then(res => {
+            dispatch({
+                type: GET_USERS,
+                payload: res.data
+            })
+        })
+        .catch(err => returnErrors(err.response.data, err.response.status))
+}

@@ -3,7 +3,7 @@ import { Input } from 'reactstrap'
 import { connect } from 'react-redux'
 import { searchClients } from '../actions/clientAction'
 
-class SearchInput extends Component {
+class SearchInputClients extends Component {
 
   state = {}
 
@@ -27,4 +27,4 @@ class SearchInput extends Component {
   }
 }
 
-export default connect(null, { searchClients })(SearchInput)
+export default connect(null, { searchClients })(SearchInputClients)

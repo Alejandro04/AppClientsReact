@@ -4,10 +4,11 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { getUsers, deleteUser } from '../actions/userAction'
 import PropTypes from 'prop-types'
+import SearchInput from './SearchInputUsers'
 
 class UserList extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getUsers()
     }
 
@@ -20,8 +21,9 @@ class UserList extends Component {
         return (
             <div>
                 <ListGroup>
-                    <TransitionGroup className="client-list">     
-                        {users.map(({_id, name, email }) => (
+                    <TransitionGroup className="client-list">
+                        <SearchInput />
+                        {users.map(({ _id, name, email }) => (
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
@@ -52,4 +54,4 @@ const mapStateToProps = (state) => ({
     users: state.users
 })
 
-export default connect(mapStateToProps, {getUsers, deleteUser})(UserList)
+export default connect(mapStateToProps, { getUsers, deleteUser })(UserList)

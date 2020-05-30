@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { getClients, deleteClient } from '../actions/clientAction'
 import PropTypes from 'prop-types'
-import SearchInput from './SearchInput'
+import SearchInput from './SearchInputClients'
 
 // Children components
 import ClientUpdateModal from './ClientUpdateModal'
