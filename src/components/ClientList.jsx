@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
+import { Container, ListGroup, ListGroupItem, Button, Input } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { getClients, deleteClient } from '../actions/clientAction'
 import PropTypes from 'prop-types'
+import SearchInput from './SearchInput'
 
 // Children components
 import ClientUpdateModal from './ClientUpdateModal'
 
 class ClientList extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getClients()
     }
 
@@ -18,17 +19,15 @@ class ClientList extends Component {
         this.props.deleteClient(id)
     };
 
-    handleUpdate = (id, name, description) => {
-
-    }
-
     render() {
         const { clients } = this.props.clients
+        console.log(this.props)
         return (
             <div>
                 <ListGroup>
                     <TransitionGroup className="client-list">
-                        {clients.map(({_id, name, description }) => (
+                        <SearchInput />
+                        {clients.map(({ _id, name, description }) => (
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
@@ -40,7 +39,7 @@ class ClientList extends Component {
                                         &times;
                                         </Button>
                                     {name} - {description}
-                                        <ClientUpdateModal _id={_id} name={name} description={description} />
+                                    <ClientUpdateModal _id={_id} name={name} description={description} />
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
@@ -60,4 +59,4 @@ const mapStateToProps = (state) => ({
     clients: state.clients
 })
 
-export default connect(mapStateToProps, {getClients, deleteClient})(ClientList)
+export default connect(mapStateToProps, { getClients, deleteClient })(ClientList)
