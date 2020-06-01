@@ -5,6 +5,8 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux'
 import { updateClient } from '../actions/clientAction'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
 class ClientUpdateModal extends Component {
 
@@ -15,12 +17,12 @@ class ClientUpdateModal extends Component {
         description: ''
     }
 
-    componentDidMount(){
-        this.setState({ 
+    componentDidMount() {
+        this.setState({
             _id: this.props._id,
             name: this.props.name,
             description: this.props.description
-         })
+        })
     }
 
     handleToogle = () => {
@@ -49,7 +51,9 @@ class ClientUpdateModal extends Component {
     render() {
         return (
             <div>
-                <Button color="warning" onClick={this.handleToogle} className="mr-4">u</Button>
+                <Button color="warning" onClick={this.handleToogle} className="mr-4">
+                    <FontAwesomeIcon icon={faEdit} />
+                </Button>
                 <Modal isOpen={this.state.modal} handleToogle={this.handleToogle}>
                     <ModalHeader handleToogle={this.handleToogle}>Update client</ModalHeader>
                     <ModalBody>

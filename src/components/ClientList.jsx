@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { getClients, deleteClient } from '../actions/clientAction'
 import PropTypes from 'prop-types'
 import SearchInput from './SearchInputClients'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 // Children components
 import ClientUpdateModal from './ClientUpdateModal'
@@ -37,7 +39,7 @@ class ClientList extends Component {
                                             size="sm"
                                             onClick={() => this.handleDelete(_id)}
                                         >
-                                            &times;
+                                            <FontAwesomeIcon icon={faTrash} />
                                         </Button>
                                         <ClientUpdateModal _id={_id} name={name} description={description} />
                                         <div className="mt-2">

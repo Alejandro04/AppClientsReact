@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { getUsers, deleteUser } from '../actions/userAction'
 import PropTypes from 'prop-types'
 import SearchInput from './SearchInputUsers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class UserList extends Component {
 
@@ -33,7 +35,7 @@ class UserList extends Component {
                                             size="sm"
                                             onClick={() => this.handleDelete(_id)}
                                         >
-                                            &times;
+                                            <FontAwesomeIcon icon={faTrash} />
                                         </Button>
                                         <div className="mt-1">
                                             {name} - {email}
