@@ -26,15 +26,19 @@ class UserList extends Component {
                         {users.map(({ _id, name, email }) => (
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
-                                    <Button
-                                        className="mr-4"
-                                        color="danger"
-                                        size="sm"
-                                        onClick={() => this.handleDelete(_id)}
-                                    >
-                                        &times;
+                                <div className="btn-action-container">
+                                        <Button
+                                            className="mr-4"
+                                            color="danger"
+                                            size="sm"
+                                            onClick={() => this.handleDelete(_id)}
+                                        >
+                                            &times;
                                         </Button>
-                                    {name} - {email}
+                                        <div className="mt-1">
+                                            {name} - {email}
+                                        </div>
+                                    </div>
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}

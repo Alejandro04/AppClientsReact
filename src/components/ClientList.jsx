@@ -30,16 +30,20 @@ class ClientList extends Component {
                         {clients.map(({ _id, name, description }) => (
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem>
-                                    <Button
-                                        className="mr-4"
-                                        color="danger"
-                                        size="sm"
-                                        onClick={() => this.handleDelete(_id)}
-                                    >
-                                        &times;
+                                    <div className="btn-action-container">
+                                        <Button
+                                            className="mr-1"
+                                            color="danger"
+                                            size="sm"
+                                            onClick={() => this.handleDelete(_id)}
+                                        >
+                                            &times;
                                         </Button>
-                                    {name} - {description}
-                                    <ClientUpdateModal _id={_id} name={name} description={description} />
+                                        <ClientUpdateModal _id={_id} name={name} description={description} />
+                                        <div className="mt-2">
+                                            {name} - {description}
+                                        </div>
+                                    </div>
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}

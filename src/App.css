@@ -20,3 +20,7 @@
     position: absolute;
     right: 0;
 }
+
+.btn-action-container{
+    display: flex;
+}

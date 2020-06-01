@@ -49,7 +49,7 @@ class ClientUpdateModal extends Component {
     render() {
         return (
             <div>
-                <Button color="warning" onClick={this.handleToogle} className="ml-4">update</Button>
+                <Button color="warning" onClick={this.handleToogle} className="mr-4">u</Button>
                 <Modal isOpen={this.state.modal} handleToogle={this.handleToogle}>
                     <ModalHeader handleToogle={this.handleToogle}>Update client</ModalHeader>
                     <ModalBody>
